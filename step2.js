@@ -3,24 +3,34 @@
 // and the path is the resource - '/' is the root path, but if you wanted to read a
 // particular resource (like '/login/index.html'), that would be defined in the path
   var https = require('https');
+  var chunks = [];
   var requestOptions = {
     host: 'sytantris.github.io',
     path: '/http-examples/step1.html'
   };
 
 
+
 function getAndPrintHTMLChunks () {
 
-  https.get(requestOptions, function (response) {
+
+  https.get(requestOptions, function(response) {
 
     response.setEncoding('utf8');
 
     response.on('data', function(data) {
-      console.log('\n', data);
+
+        chunks.push(data);
+          // console.log("Datablock: " + [i] + "\n" + chunks[i]);
+        // return chunks;
+
     });
 
     response.on('end', function() {
+      console.log('\n', 'hey look over here bro', chunks);
+
       console.log('Response stream complete.');
+
     });
   });
 

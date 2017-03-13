@@ -12,7 +12,7 @@
   };
 
 
-function getAndPrintHTMLChunks (printHTML) {
+function getHTML(options, printHTML) {
 
 
   https.get(requestOptions, function(response) {
@@ -42,7 +42,7 @@ function printHTML (html) {
   // console.log(chunks[0]);
   console.log(html);
 }
-getAndPrintHTMLChunks(printHTML);
+getHTML(null, printHTML);
 
 // notice that https.get takes a callback with one parameter -
 // response, which is a Stream that represents the HTTP response
